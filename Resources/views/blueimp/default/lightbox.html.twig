@@ -1,0 +1,34 @@
+{#
+	Expected parameters:
+	- lightboxId
+	- lightboxClass
+	- controls
+	- carousel
+	- caption
+	- close
+	- captionClass
+	- slidesClass
+	- titleClass
+	- indicator
+#}
+<div id="{{ lightboxId|default('blueimp-gallery') }}" 
+	class="blueimp-gallery
+		{% if controls is defined and controls != false %} blueimp-gallery-controls{% endif %}
+		{% if carousel is defined and carousel != false %} blueimp-gallery-carousel{% endif %}
+	"
+>
+    <div class="{{ slidesClass|default('slides') }}"></div>
+    <h3 class="{{ titleClass|default('title') }}"></h3>
+	{% if caption is defined and caption != false %}
+		<p class="{{ captionClass|default('description') }}"></p>
+	{% endif %}
+    <a class="prev">&lt;</a>
+    <a class="next">&gt;</a>
+	{% if close is defined and close != false %}
+    <a class="close">&times;</a>
+	{% endif %}
+    <a class="play-pause"></a>
+	{% if indicator is defined and indicator != false %}
+    <ol class="indicator"></ol>
+	{% endif %}
+</div>

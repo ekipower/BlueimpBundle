@@ -1,0 +1,29 @@
+{#
+	Expected parameters:
+	- linksId
+	- thumbnail
+	- sources (optionally)
+	  A soure has:
+	  - src
+	  - thumbnail
+	  - title
+	  - alt
+	  - caption
+#}
+{% set linksId = linksId|default('links') %}
+
+{% if sources|length > 0 %}
+<div id="{{ linksId }}">
+	{% if sources is defined %}
+		{% for source in sources %}
+		<a href="{{ source.src }}" {% if source.title is defined %}title="{{ source.title }}"{% endif %} {% if source.caption is defined %}data-description="{{ source.caption }}"{% endif %} data-gallery="">
+			{% if thumbnail is defined and thumbnail != false %}
+				<img src="{{ source.thumbnail }}" {% if source.alt is defined %}alt="{{ source.alt }}{% endif %}">
+			{% else %}
+				{{ source.text|default('') }}
+			{% endif %}
+		</a>
+		{% endfor %}
+	{% endif %}
+</div>
+{% endif %}

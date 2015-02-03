@@ -1,0 +1,16 @@
+{#
+	Expected parameters:
+	- linksId
+	- lightboxId
+#}
+{% set linksId, lightboxId = linksId|default('links'), lightboxId|default('blueimp-gallery-carousel') %}
+<script>
+blueimp.Gallery(
+    document.getElementById('{{ linksId }}').getElementsByTagName('a'),
+    {
+        container: '#{{ lightboxId }}',
+        carousel: true
+    }
+);
+</script>
+

@@ -1,0 +1,85 @@
+{#
+	Expected parameters:
+	- sourceId
+	- firstItemIndex (optional)
+#}
+
+{# Blueimp Lightbox #}
+{{
+	render(	
+		controller(
+			'eki.blueimp.gallery.controller:lightboxAction' with
+			{
+				'sourceId': sourceId,
+				'template': lightboxTemplate, 
+				'params': {
+					'carousel': true,
+					'caption': true,
+					'controls': true
+				}
+			}
+		)
+	)
+}}
+
+{# Selector #}
+{{
+	render(	
+		controller(
+			'eki.blueimp.gallery.controller:selectorAction' with
+			{
+				'sourceId': sourceId,
+				'params': {
+				}
+			}
+		)
+	)
+}}
+
+
+{# Blueimp links #}
+{{
+	render(	
+		controller(
+			'eki.blueimp.gallery.controller:linksAction' with
+			{
+				'sourceId': sourceId,
+				'params': {
+				}
+			}
+		)
+	)
+}}
+
+{# script #}
+
+{% include "EkiBlueimpGalleryBundle:blueimp/common:script_including.html.twig" %}
+
+{% 
+	include "EkiBlueimpGalleryBundle:blueimp/common:script_links.html.twig" 
+	with {
+		'options': {
+			'index': firstItemIndex is defined ? firstItemIndex : 'link', 
+			'event': 'event',
+			'startSlideshow': false
+		}
+	}
+%}
+
+{# Blueimp Lightbox script #}
+{{
+	render(	
+		controller(
+			'eki.blueimp.gallery.controller:lightboxScriptAction' with
+			{
+				'sourceId': sourceId,
+				'params': {
+					'carousel': true,
+					'caption': true,
+					'controls': true
+				}
+			}
+		)
+	)
+}}
+

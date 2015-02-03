@@ -1,0 +1,22 @@
+{#
+	Expected parameters:
+	- linksId
+	- options
+#}
+{% set linksId = linksId|default('links') %}
+{% set options = options|default({'index': 'link', 'event': 'event'}) %}
+<script>
+document.getElementById('{{ linksId }}').onclick = function (event) {
+    event = event || window.event;
+    var target = event.target || event.srcElement,
+        link = target.src ? target.parentNode : target,
+        options =  {
+			{% for optionKey, optionValue in options %}
+				'{{ optionKey }}': '{{ optionValue }}',
+			{% endfor %}
+		},
+        links = this.getElementsByTagName('a');
+    blueimp.Gallery(links, options);
+};
+</script>
+

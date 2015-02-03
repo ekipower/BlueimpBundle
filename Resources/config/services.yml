@@ -1,0 +1,9 @@
+parameters:
+    eki_blueimp.twig.frame_extension.class: Eki\BlueimpBundle\Twig\FrameExtension
+
+services:
+    eki_blueimp.twig.frame_extension:
+        class: %eki_blueimp.twig.frame_extension.class%
+        arguments: [@service_container]
+        tags:
+            - { name: twig.extension }

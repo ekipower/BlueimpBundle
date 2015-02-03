@@ -1,0 +1,19 @@
+{
+    "name": "ekipower/blueimp-gallery-bundle",
+	"type": "symfony-bundle",
+    "description": "Gallery bundle based on Blueimp Gallery",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Nguyen Tien Hy",
+            "email": "ngtienhy@gmail.com"
+        },
+    ],
+    "require": {
+		"blueimp/Gallery": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {"Eki\\BlueimpGalleryBundle": ""}
+    },
+    "target-dir": "Eki/BlueimpGalleryBundle"
+}

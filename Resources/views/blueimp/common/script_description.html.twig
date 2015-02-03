@@ -1,0 +1,21 @@
+{#
+	Expected parameters:
+	- linksId
+#}
+{% set linksId = linksId|default('links') %}
+<script>
+blueimp.Gallery(
+    document.getElementById('{{ linksId }}'),
+    {
+        onslide: function (index, slide) {
+            var text = this.list[index].getAttribute('data-description'),
+                node = this.container.find('.{{ caption.class|default('description') }}');
+            node.empty();
+            if (text) {
+                node[0].appendChild(document.createTextNode(text));
+            }
+        }
+    }
+);
+</script>
+
